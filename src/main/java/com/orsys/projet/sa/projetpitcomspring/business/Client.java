@@ -15,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 public class Client extends Utilisateur {
     private String numeroDeTelephone;
-
     @ManyToOne
     private Annonce annonces;
 }

@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.List;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Setter
@@ -19,5 +19,6 @@ public class TrancheHoraire {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int debut;
-    private List<Annonce> annonces;
+    @ManyToOne
+    private Annonce annonces;
 }
