@@ -4,11 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Setter
@@ -19,6 +16,6 @@ public class TrancheHoraire {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int debut;
-    @ManyToOne
-    private Annonce annonces;
+    @ManyToMany(mappedBy = "tranchesHoraires", cascade = CascadeType.REMOVE)
+    private List<Annonce> annonces;
 }
