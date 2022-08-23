@@ -19,7 +19,9 @@ public class Zone {
     private Long id;
     private String nom;
     @ManyToMany
+    @ToString.Exclude
     private List<Annonce> annonces;
     @OneToMany(mappedBy = "zone", cascade = CascadeType.REMOVE)
+    @ToString.Exclude
     private List<Arret> arrets;
 }
