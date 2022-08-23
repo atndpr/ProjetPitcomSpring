@@ -28,5 +28,6 @@ public class Annonce {
     private String cryptogramme;
     private double montantRegleEnEuros;
     @OneToMany(mappedBy = "annonce", cascade = CascadeType.REMOVE)
+    @ToString.Exclude
     private List<Zone> zones;
 }
