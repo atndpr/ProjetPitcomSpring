@@ -5,8 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
@@ -15,6 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 public class Client extends Utilisateur {
     private String numeroDeTelephone;
-    @ManyToOne
-    private Annonce annonces;
+    @OneToMany(mappedBy = "client")
+    private List<Annonce> annonces;
 }
