@@ -27,9 +27,12 @@ public class Annonce {
     private byte moisExpiration;
     private String cryptogramme;
     private double montantRegleEnEuros;
-    @ManyToMany
-    @ToString.Exclude
+    @OneToMany(mappedBy = "annonce", cascade = CascadeType.REMOVE)
     private List<Zone> zones;
+    @ManyToOne
+    private Client client;
+    @ManyToMany(mappedBy = "annonces", cascade = CascadeType.REMOVE)
+    private List<TrancheHoraire> tranchesHoraires;
     @ManyToOne
     private Client client;
     @ManyToMany
