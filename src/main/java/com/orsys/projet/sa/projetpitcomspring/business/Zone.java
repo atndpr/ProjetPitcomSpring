@@ -18,8 +18,8 @@ public class Zone {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
-    @ManyToOne
-    private Annonce annonce;
+    @ManyToMany(mappedBy = "zones", cascade = CascadeType.REMOVE)
+    private List<Annonce> annonces;
     @OneToMany(mappedBy = "zone", cascade = CascadeType.REMOVE)
     private List<Arret> arrets;
 }
