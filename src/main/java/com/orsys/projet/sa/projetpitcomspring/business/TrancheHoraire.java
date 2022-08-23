@@ -22,6 +22,6 @@ public class TrancheHoraire {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int debut;
-    @ManyToMany(mappedBy = "trancheHoraires", cascade = CascadeType.REMOVE)
+    @ManyToMany
     private List<Annonce> annonces;
 }
