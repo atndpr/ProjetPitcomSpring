@@ -1,5 +1,6 @@
 package com.orsys.projet.sa.projetpitcomspring.initUtilisation;
 
+import com.orsys.projet.sa.projetpitcomspring.business.Administrateur;
 import com.orsys.projet.sa.projetpitcomspring.business.Client;
 import com.orsys.projet.sa.projetpitcomspring.business.Utilisateur;
 import com.orsys.projet.sa.projetpitcomspring.dao.UtilisateurDao;
@@ -16,19 +17,26 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        ajouterUtilisateurs();
+        ajouterClients();
+        ajouterAdministrateurs();
     }
 
-    private void ajouterUtilisateurs() {
-        if(utilisateurDao.count()==0){
-            Client client = new Client();
-            client.setNom("MMT");
-            client.setPrenom("Sulaiman");
-            client.setEmail("client1@orsys.fr");
-            client.setMotDePassse("12345678");
-            client.setNumeroDeTelephone("0627216923");
-            utilisateurDao.save(client);
-        }
-        utilisateurDao.findAll();
+    private void ajouterClients() {
+        Client client = new Client();
+        client.setNom("MMT");
+        client.setPrenom("Sulaiman");
+        client.setEmail("client1@orsys.fr");
+        client.setMotDePassse("12345678");
+        client.setNumeroDeTelephone("0627216923");
+        utilisateurDao.save(client);
+    }
+
+    private void ajouterAdministrateurs() {
+        Administrateur administrateur = new Administrateur();
+        administrateur.setNom("Delpierre");
+        administrateur.setPrenom("Anthony");
+        administrateur.setEmail("admin1@orsys.fr");
+        administrateur.setMotDePassse("12345678");
+        utilisateurDao.save(administrateur);
     }
 }
