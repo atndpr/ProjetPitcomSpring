@@ -33,19 +33,16 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
     }
 
     private void ajouterArrets() {
-        for( int i=1; i<=20; i++ ) {
-
-            for( int j=0; j<5; ++j){
+        for (int j = 0; j <= 4; j++) {
+            for (int i = 1; i <= 4; i++) {
                 Arret arret = new Arret();
-                arret.setNom("Arret " + i);
-                arret.setLongitude(i);
-                arret.setLatitude(i);
+                arret.setNom("Arret " + (j + 1) + " - " + i);
+                arret.setLatitude(0);
+                arret.setLongitude(0);
                 arret.setZone(zoneDao.findAll().get(j));
                 arretDao.save(arret);
             }
-
         }
-
 
     }
 
