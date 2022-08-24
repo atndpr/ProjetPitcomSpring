@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @Service
 public class AnnonceServiceImpl implements AnnonceService {
+
     private AnnonceDao annonceDao;
 
     @Override

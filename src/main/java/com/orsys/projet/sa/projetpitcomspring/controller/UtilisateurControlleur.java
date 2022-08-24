@@ -23,8 +23,9 @@ public class UtilisateurControlleur {
 
     @PostMapping("/inscription") //feature 1
     public ResponseEntity<Utilisateur> inscription() {
-
-        return null;
+        Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setNom();
+        return ResponseEntity.ok(utilisateur);null;
     }
     @GetMapping("/auth") //feature 2
     public ResponseEntity<Utilisateur> auth() {
