@@ -1,5 +1,6 @@
 package com.orsys.projet.sa.projetpitcomspring.business;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
