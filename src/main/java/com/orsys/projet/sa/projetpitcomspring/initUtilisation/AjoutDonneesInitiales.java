@@ -34,7 +34,6 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 
     private void ajouterArrets() {
         for( int i=1; i<=20; i++ ) {
-
             for( int j=0; j<5; ++j){
                 Arret arret = new Arret();
                 arret.setNom("Arret " + i);
