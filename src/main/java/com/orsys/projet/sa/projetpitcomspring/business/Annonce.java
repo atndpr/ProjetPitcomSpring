@@ -32,9 +32,6 @@ public class Annonce {
     private List<Zone> zones;
     @ManyToOne
     private Client client;
-    @ManyToMany(mappedBy = "annonces", cascade = CascadeType.REMOVE)
-    @ToString.Exclude
-    private List<TrancheHoraire> tranchesHoraires;
     @ManyToMany
     @ToString.Exclude
     private List<TrancheHoraire> trancheHoraires;
