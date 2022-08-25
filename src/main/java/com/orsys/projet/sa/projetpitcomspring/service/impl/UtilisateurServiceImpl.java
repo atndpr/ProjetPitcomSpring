@@ -31,7 +31,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         if(utilisateurDao.findByEmail(utilisateur.getEmail()) != null) {
             return null;
         }else {
-            Utilisateur newUtilisateur = UtilisateurDao.save(utilisateur);
+            Utilisateur newUtilisateur = utilisateurDao.save(utilisateur);
             if(newUtilisateur != null){
                 newUtilisateur.setMotDePassse("");
             }
