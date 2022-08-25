@@ -22,7 +22,6 @@ import java.util.List;
 public class UtilisateurServiceImpl implements UtilisateurService, UserDetailsService {
 
 
-    @Resource
     private final UtilisateurDao utilisateurDao;
     private final PasswordEncoder passwordEncoder;
 
@@ -47,7 +46,6 @@ public class UtilisateurServiceImpl implements UtilisateurService, UserDetailsSe
     @Override
     public Utilisateur authService(String email, String motDePassse) {
         Utilisateur utilisateur = utilisateurDao.findByEmailAndMotDePassse(email, motDePassse);
-
         return utilisateur;
     }
 
@@ -58,8 +56,8 @@ public class UtilisateurServiceImpl implements UtilisateurService, UserDetailsSe
             throw new UsernameNotFoundException("l'utilisateur n'existe pas");
         }
         List<GrantedAuthority> grantedAuthorities = getGrantedAuthorities(utilisateur);
-        User user = new User(utilisateur.getEmail(), utilisateur.getMotDePassse(), grantedAuthorities);
-        return user;
+        return new User(utilisateur.getEmail(), utilisateur.getMotDePassse(), grantedAuthorities);
+
     }
 
     private List<GrantedAuthority> getGrantedAuthorities(Utilisateur utilisateur) {

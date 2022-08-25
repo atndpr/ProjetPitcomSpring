@@ -1,5 +1,7 @@
 package com.orsys.projet.sa.projetpitcomspring.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.Authentication;
@@ -8,9 +10,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.Date;
 
+@Component
+@Primary
 public class CustomAuthenticationManager implements AuthenticationManager {
+
     private UserDetailsService userDetailsService;
     private PasswordEncoder passwordEncoder;
 
@@ -26,7 +32,7 @@ public class CustomAuthenticationManager implements AuthenticationManager {
         return authenticationProvider().authenticate(authentication);
     }
 
-    DaoAuthenticationProvider authenticationProvider() {
+    public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder);

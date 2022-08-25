@@ -6,8 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.annotation.Resource;
 
 @Configuration
 @AllArgsConstructor
@@ -15,17 +19,16 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private UserDetailsService userDetailsService;
-    private final PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Bean
-    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {;
         http.csrf().disable()
 
                 .authenticationManager(new CustomAuthenticationManager(userDetailsService, passwordEncoder))
 
                 .formLogin()
                 .loginPage("/authentication")
-                .loginProcessingUrl("/authentication")
                 .defaultSuccessUrl("/annonces")
                 .failureForwardUrl("/inscription")
                 .and()
@@ -40,7 +43,7 @@ public class SecurityConfig {
                 // Pour la console H2 (à ne pas utiliser en prod)
                 .and()
                 .headers().frameOptions().disable();
-
         return http.build();
     }
+
 }

@@ -14,4 +14,9 @@ public class ProjetPitcomSpringApplication {
         SpringApplication.run(ProjetPitcomSpringApplication.class, args);
     }
 
+    @Bean
+    public PasswordEncoder BcryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
 }
