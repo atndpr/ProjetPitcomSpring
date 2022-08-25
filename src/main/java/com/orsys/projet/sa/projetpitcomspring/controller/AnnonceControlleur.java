@@ -28,7 +28,8 @@ public class AnnonceControlleur {
 
     //feature 4
 
-    //feature 5
-
+    /*//feature 5
+    @GetMapping("annonces/{id}")
+    public ResponseEntity<List<Annonce>> getAnnoncesClient(String id){}*/
 
 }
