@@ -1,5 +1,6 @@
 package com.orsys.projet.sa.projetpitcomspring.business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,12 +28,15 @@ public class Annonce {
     private byte moisExpiration;
     private String cryptogramme;
     private double montantRegleEnEuros;
-    @ManyToMany(mappedBy = "annonces", cascade = CascadeType.REMOVE)
+    @ManyToMany(fetch = FetchType.LAZY)
     @ToString.Exclude
+    @JsonIgnore
     private List<Zone> zones;
     @ManyToOne
+    @JsonIgnore
     private Client client;
     @ManyToMany
     @ToString.Exclude
-    private List<TrancheHoraire> trancheHoraires;
+    @JsonIgnore
+    private List<TrancheHoraire> tranchesHoraires;
 }
