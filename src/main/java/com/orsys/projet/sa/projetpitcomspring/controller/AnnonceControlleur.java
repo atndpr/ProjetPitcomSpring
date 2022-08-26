@@ -20,7 +20,7 @@ public class AnnonceControlleur {
     private final AnnonceService annonceService;
 
     @GetMapping("annonces")//feature 3
-    public List<Annonce> getAnnoncesDiffuses(){
+    public List<Annonce> getAnnonces(){
         return annonceService.recupererAnnonces();
     }
 
