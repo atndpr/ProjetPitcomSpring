@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api")
+@RequestMapping(value = "/api/")
 public class AnnonceControlleur {
 
     private final AnnonceService annonceService;
@@ -27,7 +27,7 @@ public class AnnonceControlleur {
     //feature 4
 
 
-    @GetMapping("annonces/{clientId}")//feature 5
+    @GetMapping("annonce/{clientId}")//feature 5
     public List<Annonce> getAnnoncesClient(@PathVariable String clientId){
         return annonceService.recupererAnnoncesClient(clientId);
     }
