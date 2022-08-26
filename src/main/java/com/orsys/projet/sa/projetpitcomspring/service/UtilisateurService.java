@@ -7,6 +7,14 @@ import java.util.Optional;
 
 public interface UtilisateurService {
     Optional<Utilisateur> findUserById(Long id);
+
     Optional<Client> findClientById(Long id);
+
     Optional<Administrateur> findAdminById(Long id);
+
+    Utilisateur authService(String email, String motDePassse);
+
+    Client inscriptService(Client client);
 }
+
+

@@ -1,6 +1,11 @@
 package com.orsys.projet.sa.projetpitcomspring.initUtilisation;
 
-import com.orsys.projet.sa.projetpitcomspring.business.*;
+import com.orsys.projet.sa.projetpitcomspring.business.Administrateur;
+import com.orsys.projet.sa.projetpitcomspring.business.Arret;
+import com.orsys.projet.sa.projetpitcomspring.business.Client;
+import com.orsys.projet.sa.projetpitcomspring.business.TrancheHoraire;
+import com.orsys.projet.sa.projetpitcomspring.business.Zone;
+
 import com.orsys.projet.sa.projetpitcomspring.dao.ArretDao;
 import com.orsys.projet.sa.projetpitcomspring.dao.TrancheHoraireDao;
 import com.orsys.projet.sa.projetpitcomspring.dao.UtilisateurDao;
@@ -30,8 +35,8 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
     }
 
     private void ajouterArrets() {
-        for (int j = 0; j <= 4; j++) {
-            for (int i = 1; i <= 4; i++) {
+        for( int i=1; i<=20; i++ ) {
+            for( int j=0; j<5; ++j){
                 Arret arret = new Arret();
                 arret.setNom("Arret " + (j + 1) + " - " + i);
                 arret.setLatitude(0);

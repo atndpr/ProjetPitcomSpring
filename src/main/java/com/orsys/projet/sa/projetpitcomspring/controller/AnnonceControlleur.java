@@ -24,7 +24,12 @@ public class AnnonceControlleur {
     private final ZoneService zoneService;
     private final TrancheHoraireService trancheHoraireService;
 
-    @PostMapping(value = "annonce/{clientId}")
+    @GetMapping("annonces")//feature 3
+    public List<Annonce> getAnnonces(){
+        return annonceService.recupererAnnonces();
+    }
+
+    @PostMapping(value = "annonce/{clientId}")//feature 4
     @ResponseStatus(HttpStatus.CREATED)
     Annonce annonce(@PathVariable Long clientId, @RequestBody AnnonceDto annonceDto) {
         Optional<Client> clientOpt = utilisateurService.findClientById(clientId);
@@ -71,5 +76,10 @@ public class AnnonceControlleur {
             return annonceService.addAnnonce(annonce);
         }
         return null;
+    }
+
+    @GetMapping("annonce/{clientId}")//feature 5
+    public List<Annonce> getAnnoncesClient(@PathVariable String clientId){
+        return annonceService.recupererAnnoncesClient(clientId);
     }
 }
