@@ -13,14 +13,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService, UserDetailsService {
-
 
     private final UtilisateurDao utilisateurDao;
     private final PasswordEncoder passwordEncoder;

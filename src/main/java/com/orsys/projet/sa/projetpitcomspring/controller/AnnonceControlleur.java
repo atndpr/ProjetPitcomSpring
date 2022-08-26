@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,14 +23,16 @@ public class AnnonceControlleur {
     private final AnnonceService annonceService;
 
     @GetMapping("annonces")//feature 3
-    public ResponseEntity<List<Annonce>> getAnnonces(){
+    public ResponseEntity<List<Annonce>> getAnnoncesDuffusés(){
         return ResponseEntity.ok().body(annonceService.recupererAnnonces());
     }
 
     //feature 4
 
-    /*//feature 5
-    @GetMapping("annonces/{id}")
-    public ResponseEntity<List<Annonce>> getAnnoncesClient(String id){}*/
+
+    @GetMapping("annonces/{clientId}")//feature 5
+    public ResponseEntity<List<Annonce>> getAnnoncesClient(@PathVariable String clientId){
+        return ResponseEntity.ok().body(annonceService.recupererAnnoncesClient(clientId));
+    }
 
 }
