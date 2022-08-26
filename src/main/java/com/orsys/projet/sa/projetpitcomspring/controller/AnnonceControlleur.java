@@ -31,7 +31,7 @@ public class AnnonceControlleur {
 
     @PostMapping(value = "annonce/{clientId}")//feature 4
     @ResponseStatus(HttpStatus.CREATED)
-    Annonce annonce(@PathVariable Long clientId, @RequestBody AnnonceDto annonceDto) {
+    Annonce addAnnonce(@PathVariable Long clientId, @RequestBody AnnonceDto annonceDto) {
         Optional<Client> clientOpt = utilisateurService.findClientById(clientId);
 
         if (clientOpt.isPresent()) {

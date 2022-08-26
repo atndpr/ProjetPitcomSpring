@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -24,9 +25,14 @@ public class TarifControlleur {
     private final TrancheHoraireService trancheHoraireService;
     private final ZoneService zoneService;
 
+    @GetMapping(value = "tarif")
+    List<Tarif> getAllTarifs() {
+        return tarifService.findAllTarifs();
+    }
+
     @PostMapping(value = "tarif/{administrateurId}")
     @ResponseStatus(HttpStatus.CREATED)
-    Tarif tarif(@PathVariable Long administrateurId, @RequestBody TarifDto tarifDto) {
+    Tarif addTarif(@PathVariable Long administrateurId, @RequestBody TarifDto tarifDto) {
         Optional<Administrateur> adminOpt = utilisateurService.findAdminById(administrateurId);
 
         if (adminOpt.isPresent()) {
