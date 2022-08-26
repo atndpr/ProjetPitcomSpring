@@ -18,7 +18,7 @@ public class Zone {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
-    @ManyToMany
+    @ManyToMany(mappedBy = "zones", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @ToString.Exclude
     private List<Annonce> annonces;
     @OneToMany(mappedBy = "zone", cascade = CascadeType.REMOVE)
