@@ -23,16 +23,16 @@ public class AnnonceControlleur {
     private final AnnonceService annonceService;
 
     @GetMapping("annonces")//feature 3
-    public ResponseEntity<List<Annonce>> getAnnoncesDuffusés(){
-        return ResponseEntity.ok().body(annonceService.recupererAnnonces());
+    public List<Annonce> getAnnoncesDiffuses(){
+        return annonceService.recupererAnnonces();
     }
 
     //feature 4
 
 
     @GetMapping("annonces/{clientId}")//feature 5
-    public ResponseEntity<List<Annonce>> getAnnoncesClient(@PathVariable String clientId){
-        return ResponseEntity.ok().body(annonceService.recupererAnnoncesClient(clientId));
+    public List<Annonce> getAnnoncesClient(@PathVariable String clientId){
+        return annonceService.recupererAnnoncesClient(clientId);
     }
 
 }
