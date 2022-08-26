@@ -4,7 +4,6 @@ import com.orsys.projet.sa.projetpitcomspring.business.Administrateur;
 import com.orsys.projet.sa.projetpitcomspring.business.Arret;
 import com.orsys.projet.sa.projetpitcomspring.business.Client;
 import com.orsys.projet.sa.projetpitcomspring.business.TrancheHoraire;
-import com.orsys.projet.sa.projetpitcomspring.business.Utilisateur;
 import com.orsys.projet.sa.projetpitcomspring.business.Zone;
 import com.orsys.projet.sa.projetpitcomspring.dao.ArretDao;
 import com.orsys.projet.sa.projetpitcomspring.dao.TrancheHoraireDao;
