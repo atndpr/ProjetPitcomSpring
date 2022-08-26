@@ -1,5 +1,6 @@
 package com.orsys.projet.sa.projetpitcomspring.business;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,9 +22,12 @@ public class Tarif {
     private Long id;
     private double prixEnEuros;
     @ManyToOne
+    @JsonIgnore
     private Administrateur administrateur;
     @ManyToOne
+    @JsonIgnore
     private TrancheHoraire trancheHoraire;
     @ManyToOne
+    @JsonIgnore
     private Zone zone;
 }
