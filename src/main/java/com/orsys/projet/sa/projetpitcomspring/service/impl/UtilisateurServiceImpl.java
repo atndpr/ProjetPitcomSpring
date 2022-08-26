@@ -1,6 +1,8 @@
 package com.orsys.projet.sa.projetpitcomspring.service.impl;
+import com.orsys.projet.sa.projetpitcomspring.business.Administrateur;
 import com.orsys.projet.sa.projetpitcomspring.business.Client;
 import com.orsys.projet.sa.projetpitcomspring.business.Utilisateur;
+import com.orsys.projet.sa.projetpitcomspring.dao.AdministrateurDao;
 import com.orsys.projet.sa.projetpitcomspring.dao.ClientDao;
 import com.orsys.projet.sa.projetpitcomspring.dao.UtilisateurDao;
 import com.orsys.projet.sa.projetpitcomspring.service.UtilisateurService;
@@ -15,6 +17,7 @@ import java.util.Optional;
 public class UtilisateurServiceImpl implements UtilisateurService {
     private final UtilisateurDao utilisateurDao;
     private final ClientDao clientDao;
+    private final AdministrateurDao administrateurDao;
 
     @Override
     public Optional<Utilisateur> findUserById(Long id) {
@@ -24,5 +27,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public Optional<Client> findClientById(Long id) {
         return clientDao.findById(id);
+    }
+
+    @Override
+    public Optional<Administrateur> findAdminById(Long id) {
+        return administrateurDao.findById(id);
     }
 }
