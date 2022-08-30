@@ -21,12 +21,12 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/api/**").permitAll();
+                /*.authorizeRequests()
+                .antMatchers("/api/**").permitAll();*/
 
-                /*.authenticationManager(new CustomAuthenticationManager(userDetailsService, passwordEncoder))
+                .authenticationManager(new CustomAuthenticationManager(userDetailsService, passwordEncoder))
                 .formLogin()
-                .loginPage("/")
+                .loginPage("/api/authentication")
                 .loginProcessingUrl("/api/authentication")
                 .defaultSuccessUrl("/api/client/annonces")
                 .failureForwardUrl("/api/inscription")
@@ -37,11 +37,13 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/h2-console").permitAll()
                 .antMatchers("/swagger-ui").permitAll()
+                .antMatchers("/admin/annonces").permitAll()
+                .antMatchers("/client/annonce").permitAll()
                 .antMatchers("/api/inscription").authenticated()
                 .antMatchers("/api/authentication").authenticated()
                 // Pour la console H2 (à ne pas utiliser en prod)
                 .and()
-                .headers().frameOptions().disable();*/
+                .headers().frameOptions().disable();
         return http.build();
     }
 

@@ -51,10 +51,10 @@ public class UtilisateurControlleur {
         Administrateur  admin = administrateurDao.findByEmailAndMotDePassse(email, motDePassse);
         if(client != null && client.getNumeroDeTelephone() != null){
             return "redirect:/api/client/annonces";
-            //"login success as client"+
+            //"login success as client"
         }else if(admin != null){
             return "redirect:/api/admin/annonces";
-            //"login success as admin";//
+            //"login success as admin";
         }
         return "login failed";
     }
