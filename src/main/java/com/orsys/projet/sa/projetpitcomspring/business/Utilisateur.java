@@ -8,12 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
+@Table(name = "UTILISATEUR")
 public abstract class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

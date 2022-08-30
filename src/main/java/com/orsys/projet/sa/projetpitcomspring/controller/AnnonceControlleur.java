@@ -15,21 +15,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @AllArgsConstructor
 @RestController
-@RequestMapping(value = "/api/")
+@RequestMapping(value = "/api")
 public class AnnonceControlleur {
     private final AnnonceService annonceService;
     private final UtilisateurService utilisateurService;
     private final ZoneService zoneService;
     private final TrancheHoraireService trancheHoraireService;
 
-    @GetMapping("annonces")//feature 3
+    @GetMapping("/admin/annonces")//feature 3
     public List<Annonce> getAnnonces(){
         return annonceService.recupererAnnonces();
     }
 
-    @PostMapping(value = "annonce/{clientId}")//feature 4
+
+
+    @PostMapping(value = "/client/{clientId}")//feature 4
     @ResponseStatus(HttpStatus.CREATED)
     Annonce addAnnonce(@PathVariable Long clientId, @RequestBody AnnonceDto annonceDto) {
         Optional<Client> clientOpt = utilisateurService.findClientById(clientId);
@@ -78,8 +81,8 @@ public class AnnonceControlleur {
         return null;
     }
 
-    @GetMapping("annonce/{clientId}")//feature 5
-    public List<Annonce> getAnnoncesClient(@PathVariable String clientId){
+    @GetMapping("/client/annonces")//feature 5
+    public List<Annonce> getAnnoncesClient(String clientId){
         return annonceService.recupererAnnoncesClient(clientId);
     }
 }

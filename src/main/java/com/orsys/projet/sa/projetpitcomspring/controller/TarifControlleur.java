@@ -30,7 +30,7 @@ public class TarifControlleur {
         return tarifService.findAllTarifs();
     }
 
-    @PostMapping(value = "tarif/{administrateurId}")
+    @PostMapping(value = "tarif/{administrateurId}") //feature 7
     @ResponseStatus(HttpStatus.CREATED)
     Tarif addTarif(@PathVariable Long administrateurId, @RequestBody TarifDto tarifDto) {
         Optional<Administrateur> adminOpt = utilisateurService.findAdminById(administrateurId);

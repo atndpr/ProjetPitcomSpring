@@ -15,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Optional;
 import java.util.ArrayList;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService, UserDetailsService {
-
+    @Resource
     private final UtilisateurDao utilisateurDao;
 
     private final ClientDao clientDao;
@@ -31,6 +33,11 @@ public class UtilisateurServiceImpl implements UtilisateurService, UserDetailsSe
     @Override
     public Optional<Utilisateur> findUserById(Long id) {
         return utilisateurDao.findById(id);
+    }
+
+    @Override
+    public Utilisateur findUser(String email, String motDePassse) {
+        return utilisateurDao.findByEmailAndMotDePassse(email, motDePassse);
     }
 
     @Override
@@ -56,9 +63,32 @@ public class UtilisateurServiceImpl implements UtilisateurService, UserDetailsSe
     }
 
     @Override
+    public List<Utilisateur> recupererUtilisateurs() {
+        return utilisateurDao.findAll();
+    }
+
+    //Login
+    @Override
     public Utilisateur authService(String email, String motDePassse) {
         Utilisateur utilisateur = utilisateurDao.findByEmailAndMotDePassse(email, motDePassse);
+        if(utilisateur == null) {
+            utilisateur.setMotDePassse("");
+        }
         return utilisateur;
+    }
+    //register
+    @Override
+    public Utilisateur inscriptService(Utilisateur utilisateur) {
+        if(utilisateurDao.findByEmail(utilisateur.getEmail()) != null) {
+            return null;
+        }else {
+            Utilisateur newUtilisateur = utilisateurDao.save(utilisateur);
+            if(newUtilisateur != null) {
+                newUtilisateur.setMotDePassse("");
+            }
+            return newUtilisateur;
+        }
+
     }
 
     @Override

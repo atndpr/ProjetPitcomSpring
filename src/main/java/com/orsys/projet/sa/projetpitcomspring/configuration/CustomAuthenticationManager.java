@@ -22,6 +22,7 @@ public class CustomAuthenticationManager implements AuthenticationManager {
         super();
         this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
+
     }
 
     @Override
@@ -34,7 +35,6 @@ public class CustomAuthenticationManager implements AuthenticationManager {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder);
-
         return authProvider;
     }
 }

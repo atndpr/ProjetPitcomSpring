@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @Configuration
 @AllArgsConstructor
@@ -18,25 +19,29 @@ public class SecurityConfig {
     private PasswordEncoder passwordEncoder;
 
     @Bean
-    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {;
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authenticationManager(new CustomAuthenticationManager(userDetailsService, passwordEncoder))
+                .authorizeRequests()
+                .antMatchers("/api/**").permitAll();
+
+                /*.authenticationManager(new CustomAuthenticationManager(userDetailsService, passwordEncoder))
                 .formLogin()
-                .loginPage("/authentication")
-                .defaultSuccessUrl("/annonces")
-                .failureForwardUrl("/inscription")
+                .loginPage("/")
+                .loginProcessingUrl("/api/authentication")
+                .defaultSuccessUrl("/api/client/annonces")
+                .failureForwardUrl("/api/inscription")
                 .and()
                 .logout()
-                .logoutUrl("/deconnexion")
-                .logoutSuccessUrl("/authentication")
+                .logoutSuccessUrl("/api/authentication")
                 .and()
                 .authorizeRequests()
                 .antMatchers("/h2-console").permitAll()
-                .antMatchers("/inscription").authenticated()
-                .antMatchers("/authentication").authenticated()
+                .antMatchers("/swagger-ui").permitAll()
+                .antMatchers("/api/inscription").authenticated()
+                .antMatchers("/api/authentication").authenticated()
                 // Pour la console H2 (à ne pas utiliser en prod)
                 .and()
-                .headers().frameOptions().disable();
+                .headers().frameOptions().disable();*/
         return http.build();
     }
 
